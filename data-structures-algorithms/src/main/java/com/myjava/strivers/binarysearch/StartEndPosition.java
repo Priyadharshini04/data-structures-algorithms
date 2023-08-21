@@ -1,7 +1,7 @@
 package com.myjava.strivers.binarysearch;
 
 public class StartEndPosition {
-	//https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/submissions/
+	//https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 	
 	public static int[] findStartandEndPosition(int[] nums, int target) {
 		int start = -1;
