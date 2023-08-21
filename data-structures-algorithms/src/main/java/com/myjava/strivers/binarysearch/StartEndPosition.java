@@ -23,7 +23,7 @@ public class StartEndPosition {
 			}
 		}
 		
-		left = 0;
+		left = start==-1?0:start;
 		right = nums.length - 1;
 		while (left <= right) {
 			int mid = left + (right - left) / 2;
