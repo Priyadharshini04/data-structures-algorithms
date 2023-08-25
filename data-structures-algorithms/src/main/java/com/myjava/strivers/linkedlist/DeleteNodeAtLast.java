@@ -12,5 +12,4 @@ public class DeleteNodeAtLast {
 		list.next=null;
 		return newNode;
 	}
-
 }
