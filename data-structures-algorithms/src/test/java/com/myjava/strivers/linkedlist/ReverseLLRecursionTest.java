@@ -6,16 +6,16 @@ import org.junit.Test;
 
 import com.myjava.strivers.recursion.ReverseAnArray;
 
-public class ReverseLLTest {
+public class ReverseLLRecursionTest {
 	@Test
 	public void test1() {
 		int[] arr = new int[] { 4, 2, 5, 1, 20 };
-		Node head = ReverseLL.reverse(ArrayToLinkedList.conLL(arr));
+		Node head = ReverseLLRecursion.reverse(ArrayToLinkedList.conLL(arr));
 		arr = ReverseAnArray.reverseArray(arr.length, arr, 0);
-		checkLLReversed(arr, head);
+		checkDLLReversed(arr, head);
 	}
 
-	public void checkLLReversed(int[] arr, Node head) {
+	public void checkDLLReversed(int[] arr, Node head) {
 		Node tail = head;
 		int i = 0;
 		while (tail.next != null) {
