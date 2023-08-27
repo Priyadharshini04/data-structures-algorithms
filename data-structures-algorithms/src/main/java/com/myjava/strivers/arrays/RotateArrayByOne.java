@@ -1,12 +1,7 @@
 package com.myjava.strivers.arrays;
-
+//https://www.codingninjas.com/studio/problems/left-rotate-an-array-by-one_5026278
 public class RotateArrayByOne {
-	public static void main(String[] args)
-	{
-		
-	}
     static int[] rotateArray(int[] arr, int n) {
-        // Write your code here.
     	if(n==1)
     	{
     		return arr;

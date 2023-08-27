@@ -1,10 +1,7 @@
 package com.myjava.strivers.arrays;
-
+//https://www.codingninjas.com/studio/problems/largest-element-in-the-array-largest-element-in-the-array_5026279
 public class LargestElement {
-	public static void main(String[] args)
-	{
-		System.out.print(largestElement(new int[] { 4,7,8,6,7,6 }, 6));
-	}
+
 
     static int largestElement(int[] arr, int n) {
         // Write your code here.

@@ -1,15 +1,10 @@
 package com.myjava.strivers.arrays;
-
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 public class TotalBuySellStock {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(maxProfit(new int[] {1,2,3,4,5}));
-	}
 	public static int maxProfit(int[] prices) {
     	int min=0;
     	int max=0;
-    	//int maxProfit=0;
     	int sum=0;
     	if(prices.length==1)
     		return 0;
@@ -32,7 +27,6 @@ public class TotalBuySellStock {
     		if(max<prices.length && i>min)
     		{
     				max=i;
-        		//	maxProfit=Math.max(maxProfit, );
         			sum+=prices[max]-prices[min];
         			min=i;
     		}

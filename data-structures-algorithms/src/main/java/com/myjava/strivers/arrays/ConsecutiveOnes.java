@@ -1,16 +1,9 @@
 package com.myjava.strivers.arrays;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+//https://leetcode.com/problems/max-consecutive-ones
 
 public class ConsecutiveOnes {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(findMaxConsecutiveOnes(new int[]{1,1,0,1,1,1}));
-	}
     public static int findMaxConsecutiveOnes(int[] nums) {
     	int count=0;
     	int maxCount=count;

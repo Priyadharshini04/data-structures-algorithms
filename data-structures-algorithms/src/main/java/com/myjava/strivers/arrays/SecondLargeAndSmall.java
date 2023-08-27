@@ -1,9 +1,8 @@
 package com.myjava.strivers.arrays;
-
+//https://www.codingninjas.com/studio/problems/ninja-and-the-second-order-elements_6581960
 public class SecondLargeAndSmall {
 	
 	public static int[] getSecondOrderElements(int n, int []a) {
-        // Write your code here.
         if(a.length==1)
         {
             return new int[]{a[0],a[0]};

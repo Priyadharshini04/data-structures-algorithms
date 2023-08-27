@@ -1,19 +1,7 @@
 package com.myjava.strivers.arrays;
-
+//https://www.codingninjas.com/studio/problems/longest-subarray-with-sum-k_6682399
 public class LongSubArray {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		 System.out.println(findLong(new int[]
-		{-1,0,1,1,-1,-1,0},
-		 0));
-//		 System.out.println(findLong(new int[]
-//		{0,2,5,3,3,4,4,3,0,5,5,4,4,4,3,2,0,2,3,1,3,0,4,3,1,4,5,2,4,3,1,4,5,0,3,4,0},
-//		 52));
-//		 
-//		 System.out.println(findLong(new int[]{8,15,17,0,11 },17));
-		System.out.println(findLong(new int[]{1,4,1,3},3));
-	}
 	public static int findLong(int[] arr,int k)
 	{
 		int p1=0;

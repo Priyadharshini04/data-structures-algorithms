@@ -1,15 +1,10 @@
 package com.myjava.strivers.arrays;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
+// https://leetcode.com/problems/spiral-matrix/
 public class ArraySpriral {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		spiralOrder(new int[][] {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}});
-	}
     public static List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> list=new ArrayList<Integer>();
         int i=0;
@@ -65,6 +60,52 @@ public class ArraySpriral {
         		j++;
         	}
         	k++;
+        }
+        return list;
+    }
+    public static List<Integer> spiral(int[][] matrix) {
+        List<Integer> list=new ArrayList<Integer>();
+        int right=0;
+        int down=matrix.length-1;
+        int left=matrix[0].length-1;
+        int up=0;
+        while(true)
+        {
+        	for(int i=up;i<=down;i++) {
+        		list.add(matrix[right][i]);
+        	}
+        	right++;
+        	if(right>left || up>down)
+        	{
+        		break;
+        	}
+        	for(int i=right;i<=left;i++)
+        	{
+        		list.add(matrix[i][down]);
+        	}
+        	down--;
+        	if(right>left || up>down)
+        	{
+        		break;
+        	}
+        	for(int i=down;i>=up;i--)
+        	{
+        		list.add(matrix[left][i]);
+        	}
+        	left--;
+        	if(right>left || up>down)
+        	{
+        		break;
+        	}
+        	for(int i=left;i>=right;i--)
+        	{
+        		list.add(matrix[i][up]);
+        	}
+        	up++;
+        	if(right>left || up>down)
+        	{
+        		break;
+        	}
         }
         return list;
     }

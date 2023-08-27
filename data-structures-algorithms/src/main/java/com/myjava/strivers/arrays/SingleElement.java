@@ -4,15 +4,8 @@ import java.util.Arrays;
 
 public class SingleElement {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(singleNumber(new int[] {4,1,2,1,2}));
-		System.out.println(singleNumbers(new int[] {4,1,2,1,2}));
-
-	}
     public static int singleNumber(int[] nums) {
     	Arrays.sort(nums);
-    	System.out.println(Arrays.toString(nums));
         int num=nums[0];
         int i=0;
         while(i<nums.length)

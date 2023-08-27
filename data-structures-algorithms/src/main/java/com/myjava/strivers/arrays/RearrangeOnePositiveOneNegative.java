@@ -2,14 +2,9 @@ package com.myjava.strivers.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+// https://leetcode.com/problems/rearrange-array-elements-by-sign/
 public class RearrangeOnePositiveOneNegative {
 
-	public static void main(String[] args) {
-		int[] arr=rearrangeArray(new int[] {3,1,-2,-5,2,-4});
-		// TODO Auto-generated method stub
-		System.out.println(Arrays.toString(arr));
-	}
     public static int[] rearrangeArray(int[] nums) {
     	int i=0;
     	int j=0;
@@ -38,5 +33,24 @@ public class RearrangeOnePositiveOneNegative {
     		}
     	}
         return nums;
+    }
+    
+    // Optimized
+    public static int[] rearrangeArrayOptimized(int[] nums) {
+    	int[] res=new int[nums.length];
+    	int pos=0;int neg=1;
+    	for(int i=0;i<nums.length;i++)
+    	{
+    		if(nums[i]>=0)
+    		{
+    			res[pos]=nums[i];
+    			pos+=2;
+    		}
+    		else {
+    			res[neg]=nums[i];
+    			neg+=2;
+    		}
+    	}
+    	return res;
     }
 }

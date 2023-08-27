@@ -1,11 +1,7 @@
 package com.myjava.strivers.arrays;
-
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 public class BuySellStock {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(maxProfit(new int[] {7,4,6,3,1}));
-	}
     public static int maxProfit(int[] prices) {
     	int min=0;
     	int max=0;

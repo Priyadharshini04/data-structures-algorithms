@@ -1,18 +1,12 @@
 package com.myjava.strivers.arrays;
-
+//https://www.codingninjas.com/studio/problems/remove-duplicates-from-sorted-array_1102307
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
 public class RemoveDuplicates {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ArrayList<Integer> arr= new ArrayList<Integer>( Arrays.asList(1,2,2,3,3,3,4,4,5,5) );
-		System.out.println(removeDuplicates(arr, 10));
-		System.out.println(removeDuplicate(arr, 10));
 
-	}
 	public static int removeDuplicates(ArrayList<Integer> arr,int n) {
 		if(n==1)
 		{

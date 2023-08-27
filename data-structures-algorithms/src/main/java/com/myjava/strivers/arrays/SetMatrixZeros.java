@@ -1,21 +1,10 @@
 package com.myjava.strivers.arrays;
 
-import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class SetMatrixZeros {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		int[][] matrix=new int[][] {{1,1,1},{1,0,1},{1,1,1}};
-//		setZeroes(matrix);
-		int[][] matrix1=new int[][] {{1,2,3,4},{5,0,7,8},{0,10,11,12},{13,14,15,0}};
-		setZeroes(matrix1);
-		print(matrix1);
-		
-	}
     public static void setZeroes(int[][] matrix) {
     	Set<Integer> rowMap=new TreeSet<Integer>();
     	Set<Integer> columnMap=new TreeSet<Integer>();

@@ -1,13 +1,8 @@
 package com.myjava.strivers.arrays;
-
+//https://leetcode.com/problems/rotate-image/
 public class RotateImageArray {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[][] matrix= new int[][] {{1,2,3},{4,5,6},{7,8,9}};
-		rotate(matrix);
-		print(matrix);
-	}
+
     public static void rotate(int[][] matrix) {
         for(int i=0;i<matrix.length;i++)
         {
