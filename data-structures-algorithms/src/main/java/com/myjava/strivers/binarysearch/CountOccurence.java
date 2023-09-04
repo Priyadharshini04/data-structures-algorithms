@@ -1,5 +1,5 @@
 package com.myjava.strivers.binarysearch;
-
+//https://www.codingninjas.com/studio/problems/occurrence-of-x-in-a-sorted-array_630456
 public class CountOccurence {
 	
 	public static int findOccurrence(int[] arr, int x) {
