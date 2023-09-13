@@ -9,19 +9,19 @@ public class InterSectionNodeTest {
 	@Test
 	public void test1() {
 		Node[] nodes = createTwoLLWithIntersection(new int[] { 4, 1, 8, 4, 5 }, new int[] { 5, 6, 1, 8, 4, 5 }, 2, 3);
-		assertEquals(nodes[2], InterSectionNode.getInterSectionNode(nodes[0], nodes[1]));
+		assertEquals(nodes[2], InterSectionNode.getInterSectionNodeOpti(nodes[0], nodes[1]));
 	}
 
 	@Test
 	public void test2() {
 		Node[] nodes = createTwoLLWithIntersection(new int[] { 1, 9, 1, 2, 4 }, new int[] { 3, 2, 4 }, 3, 1);
-		assertEquals(nodes[2], InterSectionNode.getInterSectionNode(nodes[0], nodes[1]));
+		assertEquals(nodes[2], InterSectionNode.getInterSectionNodeOpti(nodes[0], nodes[1]));
 	}
 
 	@Test
 	public void test3() {
 		Node[] nodes = createTwoLLWithIntersection(new int[] { 2, 6, 4 }, new int[] { 1, 5 }, 3, 2);
-		assertNull(InterSectionNode.getInterSectionNode(nodes[0], nodes[1]));
+		assertNull(InterSectionNode.getInterSectionNodeOpti(nodes[0], nodes[1]));
 	}
 
 	private Node[] createTwoLLWithIntersection(int[] a, int[] b, int ins1, int ins2) {

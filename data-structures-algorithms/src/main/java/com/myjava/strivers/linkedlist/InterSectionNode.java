@@ -26,7 +26,7 @@ public class InterSectionNode {
 	public static Node getInterSectionNodeOpti(Node headA, Node headB) {
 		Node tail1 = headA;
 		Node tail2 = headB;
-		java.util.Set<Node> set = new HashSet<Node>();
+		Set<Node> set = new HashSet<Node>();
 		while (tail1 != null) {
 			if (tail2 == tail1) {
 				return tail1;
@@ -36,11 +36,12 @@ public class InterSectionNode {
 		}
 
 		while (tail2 != null) {
-			if (set.contains(tail1)) {
+			if (set.contains(tail2)) {
 				return tail2;
 			}
+			tail2=tail2.next;
 		}
-		return new Node();
+		return null;
 	}
 
 }
