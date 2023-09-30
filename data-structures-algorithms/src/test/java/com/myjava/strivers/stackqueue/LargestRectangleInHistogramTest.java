@@ -16,4 +16,10 @@ public class LargestRectangleInHistogramTest {
 	{
 		assertEquals(4, LargestRectangleInHistogram.largestArea(new int[] {2,4}));
 	}
+	
+	@Test
+	public void test3()
+	{
+		assertEquals(2, LargestRectangleInHistogram.largestArea(new int[] {1,1}));
+	}
 }
