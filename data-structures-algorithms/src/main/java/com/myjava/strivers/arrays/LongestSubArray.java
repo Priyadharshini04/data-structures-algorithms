@@ -21,7 +21,8 @@ public class LongestSubArray {
 		return maxLength;
 	}
 
-	// O( n log n) for best and average case and for worst[if it is a unordered map] case O(n*n) 
+	// O( n log n) for best and average case and for worst[if it is a unordered map]
+	// case O(n*n)
 	public static int findLongBetter(int[] arr, int k) {
 		int maxLength = 0;
 		LinkedHashMap<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
@@ -42,11 +43,12 @@ public class LongestSubArray {
 		return maxLength;
 	}
 
-	// optimized solution two pointer approach for positivies with zeros and will not work for negative values
+	// optimized solution two pointer approach for positivies with zeros and will
+	// not work for negative values. More time complexity in worst case scenario O(n*n)
 	public static int findLongOpti(int[] arr, int k) {
 		int maxLength = 0;
 		int j = 0;
-		int sum = arr[0];
+		long sum = arr[0]; // missed the data type.
 		int i = 0;
 		while (i < arr.length) {
 			while (sum > k && j <= i) {
@@ -59,6 +61,24 @@ public class LongestSubArray {
 			i++;
 			if (i < arr.length)
 				sum += arr[i];
+		}
+		return maxLength;
+	}
+	// Re-factored the code properly.
+	public static int findLongOptiz(int[] arr, int k) {
+		int maxLength = 0;
+		int p2 = 0;
+		long sum = 0;
+		int p1 = 0;
+		while (p2 < arr.length) {
+			sum += arr[p2];
+			while (sum > k && p1 <= p2) {
+				sum -= arr[p1++];
+			}
+			if (sum == k) {
+				maxLength = Math.max(maxLength, (p2 - p1 + 1));
+			}
+			p2++;
 		}
 		return maxLength;
 	}

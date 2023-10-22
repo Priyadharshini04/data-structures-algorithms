@@ -38,6 +38,7 @@ public class LongestSubArrayTest {
 	@Test
 	public void test3() {
 		assertEquals(1, LongestSubArray.findLongOpti(new int[] { 1, 2, 1, 3 }, 2));
+		assertEquals(1, LongestSubArray.findLongOpti(new int[] { 12,13,14,15,16,17,27,2 }, 2));
 		assertEquals(21, LongestSubArray.findLongOpti(new int[] { 0, 2, 5, 3, 3, 4, 4, 3, 0, 5, 5, 4, 4, 4, 3, 2, 0, 2, 3,
 				1, 3, 0, 4, 3, 1, 4, 5, 2, 4, 3, 1, 4, 5, 0, 3, 4, 0 }, 52));
 		assertEquals(6, LongestSubArray.findLongOpti(new int[] { -1, 0, 1, 1, -1, -1, 0 }, 0));

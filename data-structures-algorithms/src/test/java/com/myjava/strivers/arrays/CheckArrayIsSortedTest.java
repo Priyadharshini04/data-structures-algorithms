@@ -14,6 +14,12 @@ public class CheckArrayIsSortedTest {
 	@Test
 	public void test2()
 	{
-		assertEquals(0,  CheckArrayIsSorted.isSorted(5, new int[] {1,2,4,3,5}));
+		assertEquals(0,  CheckArrayIsSorted.isSorted(5, new int[] {4,5,4,4,4}));
+	}
+	
+	@Test
+	public void test3()
+	{
+		assertEquals(0,  CheckArrayIsSorted.isSorted(8, new int[] {1,2,3,5,7,8,6,9}));
 	}
 }
