@@ -19,7 +19,7 @@ public class TreeTraversalsTest {
 	public static void assertCollectionArrayEquals(List<List<Integer>> expected, List<List<Integer>> actual) {
 		assertEquals(expected.size(), actual.size());
 		for (int i = 0; i < expected.size(); i++) {
-			assertTrue(expected.get(i).size() == actual.get(i).size() && expected.get(i).containsAll(actual.get(i)) && actual.get(i).containsAll(expected.get(i)));
+			assertCollectionEquals(expected.get(i),actual.get(i));
 		}
 	}
 	public static void assertCollectionEquals(List<Integer> expected, List<Integer> actual) {

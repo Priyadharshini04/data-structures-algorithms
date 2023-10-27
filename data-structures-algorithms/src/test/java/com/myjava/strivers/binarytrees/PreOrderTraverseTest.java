@@ -5,22 +5,19 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class PostOrderTraverseTest {
+public class PreOrderTraverseTest {
 	@Test
-	public void test1()
-	{
+	public void test1() {
 		TreeNode root = BinaryTreeLoop.createBinaryTreeWithNull(new int[] { 1, -1, 2, 3 });
-		List<Integer> expected = Arrays.asList(3,2,1);
-		List<Integer> actual = PostOrderTraverse.postOrderTraverse(root);
+		List<Integer> expected = Arrays.asList(1,2,3);
+		List<Integer> actual = PreOrderTraverse.preorderTraversal(root);
 		TreeTraversalsTest.assertCollectionEquals(expected, actual);
 	}
-	
 	@Test
-	public void test2()
-	{
+	public void test2() {
 		TreeNode root = BinaryTreeLoop.createBinaryTreeWithNull(new int[] { 1, -1, 2, 3 });
-		List<Integer> expected = Arrays.asList(3,2,1);
-		List<Integer> actual = PostOrderTraverse.postOrderTraverse_loop(root);
+		List<Integer> expected = Arrays.asList(1,2,3);
+		List<Integer> actual = PreOrderTraverse.preorderTraversal_loop(root);
 		TreeTraversalsTest.assertCollectionEquals(expected, actual);
 	}
 }
