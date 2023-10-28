@@ -43,4 +43,31 @@ public class PostOrderTraverse {
 
 		return list1;
 	}
+
+	public static List<Integer> postOrderTraverse_loop_singleStack(TreeNode root) {
+		List<Integer> list1 = new ArrayList<Integer>();
+		Stack<TreeNode> stk1 = new Stack<TreeNode>();
+		TreeNode node = root;
+		while (node != null || !stk1.isEmpty()) {
+			if (node != null) {
+				stk1.push(node);
+				node = node.left;
+			} else {
+				TreeNode temp = stk1.peek().right;
+				if (temp == null) {
+					temp = stk1.pop();
+					list1.add(temp.data);
+					while (!stk1.isEmpty() && temp == stk1.peek().right) {
+						temp = stk1.pop();
+						list1.add(temp.data);
+					}
+				} else {
+					node = temp;
+				}
+
+			}
+		}
+
+		return list1;
+	}
 }
