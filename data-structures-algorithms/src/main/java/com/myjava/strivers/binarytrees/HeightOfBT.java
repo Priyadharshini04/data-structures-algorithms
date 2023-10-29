@@ -14,7 +14,7 @@ public class HeightOfBT {
 		int right = heightOfBinaryTree_levelRecursion(root.right);
 		return 1 + Math.max(left, right);
 	}
-
+	
 	public int heightOfBinaryTree_level(TreeNode root) {
 		Queue<TreeNode> bfsQueue = new ArrayDeque<TreeNode>();
 		if (root != null) {
