@@ -79,7 +79,11 @@ public class InfixToPostfix {
 	public static boolean isOperator(char ch) {
 		if (ch - 'a' >= 0 && ch - 'a' <= 25) {
 			return true;
-		} else if (ch - '0' >= 0 && ch - '0' <= 9) {
+		}
+		else if (ch - 'A' >= 0 && ch - 'A' <= 25) {
+			return true;
+		}
+		else if (ch - '0' >= 0 && ch - '0' <= 9) {
 			return true;
 		}
 		return false;

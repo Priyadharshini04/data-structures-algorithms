@@ -12,9 +12,12 @@ public class LargestRectangleInHistogram {
 		Stack<Integer> stk = new Stack<Integer>();
 		for (int i = 0; i <= n; i++) {
 			while (!stk.isEmpty() && (i == n || arr[stk.peek()] >= arr[i])) {
-				int length = arr[stk.pop()];
-				int width = 1;
-				if (!stk.isEmpty()) {
+				int length = arr[stk.peek()];
+				stk.pop();
+				int width;
+				if (stk.empty()) {
+					width = i;
+				} else {
 					width = i - stk.peek() - 1;
 				}
 				maxArea = Math.max(maxArea, length * width);

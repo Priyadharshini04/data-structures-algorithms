@@ -1,6 +1,5 @@
 package com.myjava.strivers.sorting;
 
-import java.util.Arrays;
 
 public class BubbleSort {
 

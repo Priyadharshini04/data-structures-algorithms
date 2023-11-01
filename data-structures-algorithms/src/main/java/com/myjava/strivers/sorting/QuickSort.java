@@ -17,7 +17,7 @@ public class QuickSort {
 		int start=low;
 		for(int i=low;i<high;i++)
 		{
-			if(arr[i]<=arr[high] && i!=high )
+			if(arr[i]<=arr[high] )
 			{
 				int temp=arr[start];
 				arr[start]=arr[i];

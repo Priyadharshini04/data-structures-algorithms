@@ -16,25 +16,25 @@ public class PowerN {
 		if (n == 0) {
 			return 1.00000;
 		}
-		if (n >= Integer.MAX_VALUE) {
-			return Double.parseDouble(df.format(x));
-		}
-		if (n <= Integer.MIN_VALUE) {
-			if (x == 1.00000) {
-				if (n % 2 == 0)
-					return Double.parseDouble(df.format(x));
-
-				return Double.parseDouble(df.format(x * -1));
-			}
-			if (x == -1.00000) {
-				if (n % 2 == 0)
-					return Double.parseDouble(df.format(x * -1));
-
-				return Double.parseDouble(df.format(x));
-			}
-			return 0.00000;
-		}
-		x = find(x, x, n);
+//		if (n >= Integer.MAX_VALUE) {
+//			return Double.parseDouble(df.format(x));
+//		}
+//		if (n <= Integer.MIN_VALUE) {
+//			if (x == 1.00000) {
+//				if (n % 2 == 0)
+//					return Double.parseDouble(df.format(x));
+//
+//				return Double.parseDouble(df.format(x * -1));
+//			}
+//			if (x == -1.00000) {
+//				if (n % 2 == 0)
+//					return Double.parseDouble(df.format(x * -1));
+//
+//				return Double.parseDouble(df.format(x));
+//			}
+//			return 0.00000;
+//		}
+		x = myPow(x, n);
 		if (isNegative) {
 			x = 1 / x;
 		}
@@ -48,7 +48,7 @@ public class PowerN {
 		return find(x, ans * x, --n);
 	}
 
-	public double myPow(double x, int n) {
+	public static double myPow(double x, int n) {
 
 		if (n < 0) {
 			n = -n;
