@@ -18,7 +18,7 @@ public class VerticalOrderTraversal {
 		Queue<TreeNode> nodeQueue = new ArrayDeque<TreeNode>();
 		List<Integer> list1 = new ArrayList<Integer>();
 		if (root != null) {
-			bfsQue.add(new TreeNodeVertical(root.data, 0, 0));
+			bfsQue.add(new TreeNodeVertical(root, 0, 0));
 			nodeQueue.add(root);
 		}
 		int xAxis = 1;
@@ -29,11 +29,11 @@ public class VerticalOrderTraversal {
 				TreeNode node = nodeQueue.poll();
 				set.add(treeNodeVertical);
 				if (node.left != null) {
-					bfsQue.offer(new TreeNodeVertical(node.left.data, xAxis, treeNodeVertical.yAxis - 1));
+					bfsQue.offer(new TreeNodeVertical(node.left, xAxis, treeNodeVertical.yAxis - 1));
 					nodeQueue.offer(node.left);
 				}
 				if (node.right != null) {
-					bfsQue.offer(new TreeNodeVertical(node.right.data, xAxis, treeNodeVertical.yAxis + 1));
+					bfsQue.offer(new TreeNodeVertical(node.right, xAxis, treeNodeVertical.yAxis + 1));
 					nodeQueue.offer(node.right);
 				}
 			}
@@ -46,49 +46,24 @@ public class VerticalOrderTraversal {
 				verticalOrderList.add(list1);
 				list1 = new ArrayList<Integer>();
 			}
-			list1.add(set.poll().data);
+			list1.add(set.poll().node.data);
 			lastYAxis = yAxis;
 		}
 		verticalOrderList.add(list1);
 		return verticalOrderList;
 	}
 }
-
 class TreeNodeVertical {
-	public TreeNodeVertical(int data, int xAxis, int yAxis) {
+	public TreeNodeVertical(TreeNode node, int xAxis, int yAxis) {
 		super();
-		this.data = data;
+		this.node = node;
 		this.xAxis = xAxis;
 		this.yAxis = yAxis;
 	}
 
-	int data;
+	TreeNode node;
 	int xAxis;
 	int yAxis;
-
-	public Integer getData() {
-		return data;
-	}
-
-	public void setData(Integer data) {
-		this.data = data;
-	}
-
-	public int getxAxis() {
-		return xAxis;
-	}
-
-	public void setxAxis(int xAxis) {
-		this.xAxis = xAxis;
-	}
-
-	public int getyAxis() {
-		return yAxis;
-	}
-
-	public void setyAxis(int yAxis) {
-		this.yAxis = yAxis;
-	}
 }
 
 class TreeNodeVerticalComparator implements Comparator<TreeNodeVertical> {
@@ -97,9 +72,9 @@ class TreeNodeVerticalComparator implements Comparator<TreeNodeVertical> {
 	public int compare(TreeNodeVertical o1, TreeNodeVertical o2) {
 		if (o1.yAxis - o2.yAxis == 0) {
 			if (o1.xAxis - o2.xAxis == 0) {
-				if (o1.data > o2.data) {
+				if (o1.node.data > o2.node.data) {
 					return 1;
-				} else if (o1.data < o2.data) {
+				} else if (o1.node.data < o2.node.data) {
 					return -1;
 				}
 				return 0;
