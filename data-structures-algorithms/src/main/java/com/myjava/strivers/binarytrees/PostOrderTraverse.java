@@ -45,29 +45,32 @@ public class PostOrderTraverse {
 	}
 
 	public static List<Integer> postOrderTraverse_loop_singleStack(TreeNode root) {
-		List<Integer> list1 = new ArrayList<Integer>();
-		Stack<TreeNode> stk1 = new Stack<TreeNode>();
-		TreeNode node = root;
-		while (node != null || !stk1.isEmpty()) {
-			if (node != null) {
-				stk1.push(node);
-				node = node.left;
-			} else {
-				TreeNode temp = stk1.peek().right;
-				if (temp == null) {
-					temp = stk1.pop();
-					list1.add(temp.data);
-					while (!stk1.isEmpty() && temp == stk1.peek().right) {
-						temp = stk1.pop();
-						list1.add(temp.data);
-					}
-				} else {
-					node = temp;
+		List<Integer> list=new ArrayList<Integer>();
+		Stack<TreeNode> stack=new Stack<>();
+		TreeNode node=root;
+		while(node!=null || !stack.isEmpty())
+		{
+			while(node!=null)
+			{
+				stack.push(node);
+				node=node.left;
+			}
+			TreeNode peek=stack.peek();
+			if(peek.right==null)
+			{
+				peek=stack.pop();
+				list.add(peek.data);
+				while(!stack.isEmpty() && peek==stack.peek().right)
+				{
+				peek=stack.pop();
+				list.add(peek.data);
 				}
 
 			}
+			else{
+				node=peek.right;
+			}
 		}
-
-		return list1;
+		return list;
 	}
 }

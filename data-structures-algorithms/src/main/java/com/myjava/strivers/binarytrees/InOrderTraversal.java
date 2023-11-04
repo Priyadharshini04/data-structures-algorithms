@@ -15,20 +15,19 @@ public class InOrderTraversal {
 
 	public static List<Integer> inorderTraversalLoop(TreeNode root) {
 		List<Integer> inOrderList = new ArrayList<Integer>();
-		Stack<TreeNode> stk = new Stack<TreeNode>();
-		TreeNode node = root;
-		while (true) {
-			if (node != null) {
-				stk.push(node);
-				node = node.left;
-			} else {
-				if (stk.isEmpty()) {
-					break;
-				}
-				node = stk.pop();
-				inOrderList.add(node.data);
-				node = node.right;
+		TreeNode node=root;
+		Stack<TreeNode> stack=new Stack<>();
+		while(node!=null || !stack.isEmpty())
+		{
+			// traverse till left most node
+			while(node!=null)
+			{
+				stack.push(node);
+				node=node.left;
 			}
+			TreeNode lastNode=stack.pop();
+			inOrderList.add(lastNode.data);
+			node=lastNode.right;
 		}
 		return inOrderList;
 	}

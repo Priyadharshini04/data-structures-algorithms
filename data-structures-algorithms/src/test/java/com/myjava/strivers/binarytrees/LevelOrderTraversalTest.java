@@ -22,6 +22,14 @@ public class LevelOrderTraversalTest {
 		List<Integer> actual = LevelOrderTraversal.levelOrderTraversal(root);
 		TreeTraversalsTest.assertCollectionEquals(expected, actual);
 	}
+	
+	@Test
+	public void test4() {
+		TreeNode root = BinaryTreeLoop.createBinaryTreeWithNull(new int[] { 3, 9, 20, -1, -1, 15, 7 });
+		List<List<Integer>> expected = Arrays.asList(Arrays.asList(3), Arrays.asList(9, 20), Arrays.asList(15, 7));
+		List<List<Integer>> actual = LevelOrderTraversal.levelOrderTraversal_recursion(root);
+		TreeTraversalsTest.assertCollectionArrayEquals(expected, actual);
+	}
 
 	@Test
 	public void test3() {
