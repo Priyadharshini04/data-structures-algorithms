@@ -4,7 +4,7 @@ package com.myjava.strivers.arrays;
 public class Sort012 {
 
 	// O(n) Dutch national flag algorithm
-	public static int[] sortColors(int[] nums) {
+	public static int[] sortColorss(int[] nums) {
 		int low = 0;
 		int mid = 0;
 		int high = nums.length - 1;
@@ -19,6 +19,28 @@ public class Sort012 {
 				mid++;
 			} else if (nums[mid] == 2) {
 				int temp = nums[mid];
+				nums[mid] = nums[high];
+				nums[high] = temp;
+				high--;
+			}
+		}
+		return nums;
+	}
+
+	public static int[] sortColors(int[] nums) {
+		int low = 0;
+		int mid = 0;
+		int high = nums.length - 1;
+		while (mid <= high && high >= 0) {
+			int temp = nums[mid];
+			if (temp == 1) {
+				mid = mid + 1;
+			} else if (temp == 0) {
+				nums[mid] = nums[low];
+				nums[low] = temp;
+				low++;
+				mid++;
+			} else {
 				nums[mid] = nums[high];
 				nums[high] = temp;
 				high--;
