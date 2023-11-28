@@ -2,7 +2,7 @@ package com.myjava.strivers.sorting;
 
 
 public class MergeSort {
-
+    // 5,2,4,6,1,3
 	public static void mergeSort(int[] arr,int start,int end)
 	{
 		if(start<end)
