@@ -23,4 +23,13 @@ public class RootToLeafPathTest {
 		List<String> actual = RootToLeafPath.allRootToLeaf(root);
 		assertTrue(expected.size() == actual.size() && expected.containsAll(actual) && actual.containsAll(expected));
 	}
+
+	@Test
+	public void test3() {
+		TreeNode root = BinaryTreeLoop.createBinaryTreeWithNull(
+				new int[] { 25, 23, 38, 25, -1, 39, 27, -1, -1, 29, -1, -1, 17, -1, -1, 5, -1, -1, 9, -1, -1 });
+		List<String> expected = Arrays.asList("25 23 25 ", "25 38 27 17 5 9 ", "25 38 39 29 ");
+		List<String> actual = RootToLeafPath.allRootToLeaf(root);
+		assertTrue(expected.size() == actual.size() && expected.containsAll(actual) && actual.containsAll(expected));
+	}
 }
