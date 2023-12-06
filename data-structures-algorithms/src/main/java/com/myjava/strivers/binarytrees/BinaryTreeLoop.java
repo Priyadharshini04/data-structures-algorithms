@@ -14,7 +14,7 @@ public class BinaryTreeLoop {
 		TreeNode root = new TreeNode(arr[0]);
 		q1.offer(root);
 		int i = 0;
-		while (!q1.isEmpty() && i <= arr.length/2) {
+		while (!q1.isEmpty() && i <= arr.length / 2) {
 			TreeNode temp = q1.poll();
 			int left = 2 * i + 1;
 			int right = 2 * i + 2;
@@ -39,7 +39,7 @@ public class BinaryTreeLoop {
 		TreeNode root = new TreeNode(arr[0]);
 		q1.offer(root);
 		int i = 0;
-		while (!q1.isEmpty() && i <= arr.length/2) {
+		while (!q1.isEmpty() && i <= arr.length / 2) {
 			TreeNode temp = q1.poll();
 			int left = 2 * i + 1;
 			int right = 2 * i + 2;
@@ -55,20 +55,19 @@ public class BinaryTreeLoop {
 		}
 		return root;
 	}
-	
+
 	public static TreeNode createBinaryTreeWithList(List<Integer> arr) {
 		if (arr.size() == 0) {
 			return null;
 		}
 		Queue<TreeNode> q1 = new ArrayDeque<TreeNode>();
-		if(arr.get(0)==null)
-		{
+		if (arr.get(0) == null) {
 			return null;
 		}
 		TreeNode root = new TreeNode(arr.get(0));
 		q1.offer(root);
 		int i = 0;
-		while (!q1.isEmpty() && i <= arr.size()/2) {
+		while (!q1.isEmpty() && i <= arr.size() / 2) {
 			TreeNode temp = q1.poll();
 			int left = 2 * i + 1;
 			int right = 2 * i + 2;
@@ -83,6 +82,60 @@ public class BinaryTreeLoop {
 			i++;
 		}
 		return root;
+	}
+
+	public static List<TreeNode> createBinaryTreeWithListWithChilds(List<Integer> arr, int p, int q, int lca) {
+		if (arr.size() == 0) {
+			return null;
+		}
+		Queue<TreeNode> q1 = new ArrayDeque<TreeNode>();
+		if (arr.get(0) == null) {
+			return null;
+		}
+		TreeNode pNode = null;
+		TreeNode qNode = null;
+		TreeNode lcaNode = null;
+		TreeNode root = new TreeNode(arr.get(0));
+		q1.offer(root);
+		int i = 0;
+
+		while (!q1.isEmpty() && i <= arr.size() / 2) {
+
+			TreeNode temp = q1.poll();
+			if (lca == i) {
+				lcaNode = temp;
+			}
+			int left = 2 * i + 1;
+			int right = 2 * i + 2;
+			if (left < arr.size() && arr.get(left) != null) {
+				temp.left = new TreeNode(arr.get(left));
+				if (left == p) {
+					pNode = temp.left;
+				}
+				if (left == q) {
+					qNode = temp.left;
+				}
+				if (left == lca) {
+					lcaNode = temp.left;
+				}
+				q1.offer(temp.left);
+			}
+			if (right < arr.size() && arr.get(right) != null) {
+				temp.right = new TreeNode(arr.get(right));
+				if (right == p) {
+					pNode = temp.right;
+				}
+				if (right == q) {
+					qNode = temp.right;
+				}
+				if (right == lca) {
+					lcaNode = temp.left;
+				}
+				q1.offer(temp.right);
+			}
+			i++;
+		}
+		return List.of(root, pNode, qNode, lcaNode);
 	}
 
 }
