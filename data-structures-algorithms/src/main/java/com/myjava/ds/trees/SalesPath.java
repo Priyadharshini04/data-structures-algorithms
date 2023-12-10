@@ -3,10 +3,15 @@ package com.myjava.ds.trees;
 // https://www.pramp.com/challenge/15oxrQx6LjtQj9JK9XqA
 public class SalesPath {
 	int minSalesPath = Integer.MAX_VALUE;
-
+	int result = Integer.MAX_VALUE;
 	public int getCheapestCost(Node rootNode) {
-		int sum = getCheapestCostPath(rootNode, new int[rootNode.children.length]);
-		return sum;
+//		int sum = getCheapestCostPath(rootNode, new int[rootNode.children.length]);
+//		return sum;
+		if (rootNode == null)
+			return 0;
+
+		findCheapest(rootNode, rootNode.cost);
+		return result;
 	}
 
 	private int getCheapestCostPath(Node rootNode, int[] childSum) {
@@ -31,4 +36,20 @@ public class SalesPath {
 		}
 		return rootNode.cost + sum;
 	}
+	
+	void findCheapest(Node root, int sum)
+    {
+      if(root == null) return;
+      
+      if(root.children == null)
+      {
+        result = Math.min(result,sum);
+        return;
+      }
+      
+      for(Node children: root.children)
+      {
+        findCheapest(children,sum+children.cost);
+      }      
+    }
 }
