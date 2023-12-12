@@ -7,6 +7,7 @@ import java.util.Queue;
 
 public class PascalTriangle {
 
+	// more space.
 	public static List<Long> nthRowOfPascalTriangle(int n) {
 		List<Long> list = new ArrayList<Long>();
 		Queue<Long> queue = new ArrayDeque<>();
