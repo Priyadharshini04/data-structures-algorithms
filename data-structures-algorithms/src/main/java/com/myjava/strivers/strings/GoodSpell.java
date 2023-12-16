@@ -3,6 +3,7 @@ package com.myjava.strivers.strings;
 public class GoodSpell {
 	static int goodSpell(int n, String s) {
 		// Write your code here.
+
 		char[] ch = s.toCharArray();
 		long firstTotal = 1L;
 		long secondTotal = 1L;
