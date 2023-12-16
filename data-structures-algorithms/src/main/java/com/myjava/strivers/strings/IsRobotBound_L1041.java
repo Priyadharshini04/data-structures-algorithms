@@ -5,7 +5,45 @@ import java.util.Objects;
 
 // https://leetcode.com/problems/robot-bounded-in-circle/description/
 public class IsRobotBound_L1041 {
+	// along with direction different problem
 	public static boolean isRobotBounded(String instructions) {
+		int x = 0, y = 0;
+		int dir = 0;
+		char[] path = instructions.toCharArray();
+		// Traverse the path given for robot
+		for (int i = 0; i < path.length; i++) {
+			// Find current move
+			char move = path[i];
+
+			// If move is left or
+			// right, then change direction
+			if (move == 'R')
+				dir = (dir + 1) % 4;
+			else if (move == 'L')
+				dir = (4 + dir - 1) % 4;
+
+			// If move is Go, then
+			// change x or y according to
+			// current direction
+			else // if (move == 'G')
+			{
+				if (dir == 0)
+					y++;
+				else if (dir == 1)
+					x++;
+				else if (dir == 2)
+					y--;
+				else // dir == 3
+					x--;
+			}
+		}
+		// If robot comes back to
+		// (0, 0), then path is cyclic
+		return (x == 0 && y == 0);
+	}
+
+	// proper optimal solution for this problem
+	public static boolean isRobotBoundedss(String instructions) {
 		int dir[][] = { { 0, 1 }, { -1, 0 }, { 0, -1 }, { 1, 0 } };
 		int i = 0;
 		int x = 0;
@@ -33,35 +71,35 @@ public class IsRobotBound_L1041 {
 				return true;
 		}
 //		if (instructions.contains("L") && instructions.contains("R")) {
-			String str = instructions + instructions + instructions + instructions;
-			Walk walk = new Walk();
-			HashSet<Walk> set = new HashSet<Walk>();
-			set.add(walk);
-			for (int i = 0; i < str.length(); i++) {
-				if (str.charAt(i) == 'G') {
-					if (walk.degre == 0) {
-						walk.y += 1;
-					} else if (walk.degre % 180 == 0 || walk.degre % -180 == 0) {
-						walk.y -= 1;
-					} else if (walk.degre == -90) {
-						walk.x -= 1;
-					} else if (walk.degre == 90) {
-						walk.x += 1;
-					}
-				} else if (str.charAt(i) == 'L') {
-					walk.degre -= 90;
-				} else if (str.charAt(i) == 'R') {
-					walk.degre += 90;
+		String str = instructions + instructions + instructions + instructions;
+		Walk walk = new Walk();
+		HashSet<Walk> set = new HashSet<Walk>();
+		set.add(walk);
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == 'G') {
+				if (walk.degre == 0) {
+					walk.y += 1;
+				} else if (walk.degre % 180 == 0 || walk.degre % -180 == 0) {
+					walk.y -= 1;
+				} else if (walk.degre == -90) {
+					walk.x -= 1;
+				} else if (walk.degre == 90) {
+					walk.x += 1;
 				}
-				if (walk.x == 0 && walk.y == 0) {
-					return true;
-				}
+			} else if (str.charAt(i) == 'L') {
+				walk.degre -= 90;
+			} else if (str.charAt(i) == 'R') {
+				walk.degre += 90;
+			}
+			if (walk.x == 0 && walk.y == 0) {
+				return true;
+			}
 //				if (set.contains(walk)) {
 //					return true;
 //				}
-				set.add(walk);
-			}
-			return false;
+			set.add(walk);
+		}
+		return false;
 //		} else if (instructions.contains("L")) {
 //			return true;
 //		} else if (instructions.contains("R")) {
