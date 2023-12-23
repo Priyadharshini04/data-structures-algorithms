@@ -19,12 +19,11 @@ public class MissingNumberInArray {
 	
 	public static int missingNumberOptimized(int[] nums)
 	{
-		int xor=0, i=0;
-		while(i<nums.length)
-		{
-			xor=xor^nums[i]^i;
+		int xor = 0, i = 0;
+		while (i < nums.length) {
+			xor = xor ^ nums[i] ^ i;
 			i++;
 		}
-		return xor^i;
+		return xor ^ i;
 	}
 }

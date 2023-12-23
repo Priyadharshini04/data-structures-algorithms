@@ -4,16 +4,15 @@ package com.myjava.strivers.greedy;
 public class JumpGame2_L45 {
 
 	public static int minimumJumpTakenToReach(int[] nums) {
-		int reachable = 0;
-		int i = 0;
-		while (i < nums.length - 1) {
-			if (reachable >= nums.length - 1) {
-				return i;
-			}
-			reachable +=nums[i];
-			i++;
-		}
-		return i;
+		int jumps = 0, currEnd = 0, currFarthest = 0;
+	      for(int i = 0; i < nums.length - 1; i ++) {
+	          currFarthest = Math.max(currFarthest, i + nums[i]);
+	          if(i == currEnd) {
+	              currEnd = currFarthest;
+	              jumps ++;
+	          }
+	      }  
+	      return jumps;
 	}
 
 }

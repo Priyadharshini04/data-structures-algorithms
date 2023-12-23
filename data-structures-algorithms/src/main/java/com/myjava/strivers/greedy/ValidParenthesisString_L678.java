@@ -3,7 +3,7 @@ package com.myjava.strivers.greedy;
 // https://leetcode.com/problems/valid-parenthesis-string/
 public class ValidParenthesisString_L678 {
 
-	public static boolean checkValidString(String s) {
+	public static boolean checkValidStrings(String s) {
 		int maxOpenParenthesis = 0;
 		int minOpenParenthesis = 0;
 		for (char ch : s.toCharArray()) {
@@ -28,8 +28,9 @@ public class ValidParenthesisString_L678 {
 		return false;
 	}
 
-	// Instead of each thing separately try to think in a combined manner.
-	public static boolean checkValidStrings(String s) {
+	// Instead of each thing separately try to think in a combined manner. will not
+	// work.
+	public static boolean checkValidString(String s) {
 		int left = 0;
 		int star = 0;
 		int right = 0;
@@ -39,27 +40,17 @@ public class ValidParenthesisString_L678 {
 			} else if (s.charAt(i) == '*') {
 				star++;
 			} else if (s.charAt(i) == ')') {
-				if (left > 0) {
-					left--;
-				} else if (star > 0) {
-					star--;
-				} else {
+				if (left > 0 || star > 0) {
 					right++;
+				} else {
+					return false;
 				}
 			}
+			if (!((left + star) >= right) && !(right - left == 0) && !(left >= (star + right))) {
+				return false;
+			}
 		}
-		while (star > 0 && left > 0) {
-			star--;
-			left--;
-		}
-		while (star > 0 && right > 0) {
-			star--;
-			right--;
-		}
-		if (right == 0 && left == 0) {
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 }

@@ -3,6 +3,8 @@ package com.myjava.strivers.stackqueue;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.myjava.strivers.linkedlist.Node;
+
 // https://leetcode.com/problems/min-stack/
 
 // More space complexity O(2N) TC O(1)
@@ -49,20 +51,18 @@ public class MinStack {
 
 	public void push(int val) {
 		if (min > val) {
-			Long val1=(long) val;
-			list.add(((2*val1)-min)); 
-			min=val;
-		}
-		else {
+			Long val1 = (long) val;
+			list.add(((2 * val1) - min));
+			min = val;
+		} else {
 			list.add((long) val);
 		}
 		++top;
 	}
 
 	public void pop() {
-		if( list.get(top) < min)
-		{
-			min=(int) (2*min-list.get(top));
+		if (list.get(top) < min) {
+			min = (int) (2 * min - list.get(top));
 		}
 		list.remove(top--);
 		if (top == -1) {
@@ -71,11 +71,10 @@ public class MinStack {
 	}
 
 	public int top() {
-		if(list.get(top)<min)
-		{
+		if (list.get(top) < min) {
 			return min;
 		}
-		int x=Integer.parseInt(String.valueOf(list.get(top)));
+		int x = Integer.parseInt(String.valueOf(list.get(top)));
 		return x;
 	}
 

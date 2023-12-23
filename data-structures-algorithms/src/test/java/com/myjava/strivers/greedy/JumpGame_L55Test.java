@@ -11,7 +11,7 @@ public class JumpGame_L55Test {
 	{
 		assertTrue(JumpGame_L55.canJump(new int[] {2,3,1,1,4}));
 	}
-	
+
 	@Test
 	public void test2()
 	{

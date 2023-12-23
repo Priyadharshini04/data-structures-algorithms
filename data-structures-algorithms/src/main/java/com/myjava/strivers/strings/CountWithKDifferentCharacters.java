@@ -2,7 +2,7 @@ package com.myjava.strivers.strings;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+//https://www.codingninjas.com/studio/problems/longest-substring-with-at-most-k-distinct-characters_2221410
 public class CountWithKDifferentCharacters {
 
 	public static int countSubStrings(String str, int k) {

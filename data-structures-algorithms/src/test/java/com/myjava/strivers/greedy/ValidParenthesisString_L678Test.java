@@ -37,4 +37,10 @@ public class ValidParenthesisString_L678Test {
 		assertFalse(ValidParenthesisString_L678.checkValidString(
 				"(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(())"));
 	}
+
+	@Test
+	public void test7() {
+		assertTrue(ValidParenthesisString_L678.checkValidString(
+				"((((()(()()()*()(((((*)()*(**(())))))(())()())(((())())())))))))(((((())*)))()))(()((*()*(*)))(*)()"));
+	}
 }

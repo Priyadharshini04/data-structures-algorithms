@@ -62,7 +62,7 @@ public class IsRobotBound_L1041 {
 		return x == 0 && y == 0 || i != 0;
 	}
 
-	// Not working for all the scenarios
+	// Not working for all the scenarios.
 	public static boolean isRobotBoundeds(String instructions) {
 		if (instructions.length() == 1) {
 			if (instructions.charAt(0) == 'G')
