@@ -7,7 +7,7 @@ public class CreateBinaryTree {
 	}
 
 	public static TreeNode createBinaryStructure(int[] arr, int i, TreeNode temp, TreeNode head) {
-		if (i < arr.length / 2) {
+		if (i < (arr.length / 2) + 1) {
 			int left = i * 2 + 1;
 			int right = i * 2 + 2;
 			if (head == null) {

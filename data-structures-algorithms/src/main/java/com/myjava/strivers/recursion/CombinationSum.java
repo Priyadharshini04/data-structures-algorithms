@@ -21,16 +21,16 @@ public class CombinationSum {
 			}
 		}
 
-		int i = 0;
-		Set<Integer> set = new HashSet<Integer>();
-		while (i < candidates.length) {
-			set.add(candidates[i]);
-			i++;
-		}
+//		Set<Integer> set = new HashSet<Integer>();
+//		while (i < candidates.length) {
+//			set.add(candidates[i]);
+//			i++;
+//		}
 		findCombos(candidates, 0, target, 0, list1, list2);
 		return list2;
 	}
-	// O(n*n)
+
+	// O(2^(target*k)) k is average length. SC:O(k*x)
 	public static void findCombos(int[] arr, int sum, int k, int idx, List<Integer> list1, List<List<Integer>> list2) {
 		if (sum > k) {
 			return;

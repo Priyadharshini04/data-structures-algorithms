@@ -27,7 +27,7 @@ public class AddOneAsNumberTest {
 
 	public void assertData(int[] arr, Node head) {
 		int i = 0;
-		while (head != null) {
+		while (i < arr.length) {
 			assertEquals(arr[i], head.data);
 			head = head.next;
 			i++;

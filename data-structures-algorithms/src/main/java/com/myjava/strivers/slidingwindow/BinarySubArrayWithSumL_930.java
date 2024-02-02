@@ -1,8 +1,11 @@
 package com.myjava.strivers.slidingwindow;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 // https://leetcode.com/problems/binary-subarrays-with-sum/description/
 public class BinarySubArrayWithSumL_930 {
-	
+
 	// Optimal solution.
 	public static int numSubarraysWithSum(int[] nums, int goal) {
 		return atmost(nums, goal) - atmost(nums, goal - 1);

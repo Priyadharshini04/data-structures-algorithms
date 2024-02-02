@@ -11,7 +11,7 @@ public class BinaryString {
 		if (N == 0) {
 			return list;
 		}
-		generateString("", N, list);
+		generateStrings(new StringBuilder(), N, list);
 		return list;
 	}
 
@@ -23,6 +23,26 @@ public class BinaryString {
 		generateString(string + "0", n - 1, list);
 		if (!string.endsWith("1")) {
 			generateString(string + "1", n - 1, list);
+		}
+	}
+
+	// Using String Builder.
+	private static void generateStrings(StringBuilder string, int n, List<String> list) {
+		if (n == 0) {
+			list.add(string.toString());
+			return;
+		}
+		string.append("0");
+		generateStrings(string, n - 1, list);
+		if (string.length() > 0) {
+			string.deleteCharAt(string.length() - 1);
+		}
+		if (string.length() == 0 || string.charAt(string.length() - 1) != '1') {
+			string.append("1");
+			generateStrings(string, n - 1, list);
+		}
+		if (string.length() > 0) {
+			string.deleteCharAt(string.length() - 1);
 		}
 	}
 }
