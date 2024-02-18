@@ -5,6 +5,27 @@ import java.util.Stack;
 
 public class DFSTraversal {
 
+	public static ArrayList<Integer> dfsOfGraphRec(int v, ArrayList<ArrayList<Integer>> adj) {
+		ArrayList<Integer> result = new ArrayList<>();
+		boolean visited[] = new boolean[v];
+		dfsOfGraphRecHelp(v, adj, result, visited, 0);
+		return result;
+	}
+
+	private static void dfsOfGraphRecHelp(int v, ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> result,
+			boolean[] visited, int node) {
+		if (!visited[node]) {
+			visited[node] = true;
+			result.add(node);
+			for (int i = 0; node < v && i < adj.get(node).size(); i++) {
+				int node2 = adj.get(node).get(i);
+				if (!visited[node2]) {
+					dfsOfGraphRecHelp(v, adj, result, visited, node2);
+				}
+			}
+		}
+	}
+
 	public static ArrayList<ArrayList<Integer>> depthFirstSearch(int v, int e, ArrayList<ArrayList<Integer>> pairs) {
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		boolean visisted[] = new boolean[v];

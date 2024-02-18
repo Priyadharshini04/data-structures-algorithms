@@ -16,7 +16,7 @@ public class ImplementPriorityQueueTest {
 		assertEquals(5, ImplementPriorityQueue.pop(heap));
 		assertEquals(2, ImplementPriorityQueue.pop(heap));
 	}
-	
+
 	@Test
 	public void test2() {
 		List<Integer> heap = new ArrayList<Integer>();
@@ -32,11 +32,10 @@ public class ImplementPriorityQueueTest {
 		assertEquals(79, ImplementPriorityQueue.pop(heap));
 		assertEquals(32, ImplementPriorityQueue.pop(heap));
 	}
-	
+
 	@Test
-	public void test3()
-	{
-		List<Integer> heap=new ArrayList<Integer>();
+	public void test3() {
+		List<Integer> heap = new ArrayList<Integer>();
 		ImplementPriorityQueue.push(heap, 12);
 		ImplementPriorityQueue.push(heap, 7);
 		ImplementPriorityQueue.push(heap, 18);
@@ -44,4 +43,6 @@ public class ImplementPriorityQueueTest {
 		ImplementPriorityQueue.push(heap, 13);
 		ImplementPriorityQueue.push(heap, 19);
 	}
+
+	
 }

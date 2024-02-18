@@ -15,6 +15,22 @@ public class SortLinkedListTest {
 		checkLLSorted(arr, head);
 	}
 
+	@Test
+	public void test2() {
+		int[] arr = new int[] { 4, 2, 1, 3 };
+		Node head = SortLinkedList.bubbleSort(ArrayToLinkedList.conLL(arr));
+		Arrays.sort(arr);
+		checkLLSorted(arr, head);
+	}
+
+	@Test
+	public void test3() {
+		int[] arr = new int[] { 4, 2, 1, 3 };
+		Node head = SortLinkedList.mergeSort(ArrayToLinkedList.conLL(arr));
+		Arrays.sort(arr);
+		checkLLSorted(arr, head);
+	}
+
 	public void checkLLSorted(int[] arr, Node head) {
 		Node tail = head;
 		int i = 0;

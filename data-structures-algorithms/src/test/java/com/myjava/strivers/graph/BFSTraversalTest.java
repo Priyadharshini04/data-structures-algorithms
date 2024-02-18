@@ -13,7 +13,7 @@ public class BFSTraversalTest {
 	public void test1() {
 		List<List<Integer>> arr = Arrays.asList(Arrays.asList(1, 2, 3), Arrays.asList(4), Arrays.asList(5),
 				Arrays.asList(), Arrays.asList());
-		List<Integer> result = BFSTraversal.bfsTraversal(5, arr);
+		List<Integer> result = BFSTraversal.bfsTraversalRecursion(5, arr);
 		List<Integer> expected = Arrays.asList(0, 1, 2, 3, 4, 5);
 		assertTrue(result.size() == expected.size() && result.containsAll(expected) && expected.containsAll(result));
 	}

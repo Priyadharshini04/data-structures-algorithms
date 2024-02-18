@@ -31,8 +31,8 @@ public class DFSTraversalTest {
 		ArrayList<ArrayList<Integer>> pairs = new ArrayList<>();
 		pairs.add(new ArrayList<>(List.of(0, 2)));
 		pairs.add(new ArrayList<>(List.of(0, 3)));
-		pairs.add(new ArrayList<>(List.of(0,1)));
-		pairs.add(new ArrayList<>(List.of(2,4)));
+		pairs.add(new ArrayList<>(List.of(0, 1)));
+		pairs.add(new ArrayList<>(List.of(2, 4)));
 		result = DFSTraversal.dfsOfGraph(5, pairs);
 		ArrayList<Integer> expected = new ArrayList<>(List.of(0, 2, 4, 3, 1));
 		assertTrue(expected.size() == result.size() && expected.containsAll(result) && result.containsAll(expected));

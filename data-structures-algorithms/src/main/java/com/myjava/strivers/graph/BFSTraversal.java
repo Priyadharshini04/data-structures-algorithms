@@ -6,11 +6,33 @@ import java.util.List;
 import java.util.Queue;
 
 public class BFSTraversal {
+	// TC: O(N)+O(2E for undirected graph E for directed graph) SC: O(3N)
+	public static List<Integer> bfsTraversalRecursion(int n, List<List<Integer>> adj) {
+		List<Integer> list = new ArrayList<Integer>();
+		boolean visited[] = new boolean[n + 1];
+		bfsTraversalRecursionHelper(list, visited, adj, 0);
+		return list;
+
+	}
+
+	private static void bfsTraversalRecursionHelper(List<Integer> list, boolean[] visited, List<List<Integer>> adj,
+			int node) {
+		if ( !visited[node]) {
+			list.add(node);
+			visited[node] = true;
+			for (int i = 0; adj.size() > node && i < adj.get(node).size(); i++) {
+				int node2 = adj.get(node).get(i);
+				if (!visited[node2]) {
+					bfsTraversalRecursionHelper(list, visited, adj, node2);
+				}
+			}
+		}
+	}
 
 	public static List<Integer> bfsTraversal(int n, List<List<Integer>> adj) {
 		List<Integer> list = new ArrayList<Integer>();
 		Queue<Integer> queue = new ArrayDeque<Integer>();
-		boolean visited[] = new boolean[n+1];
+		boolean visited[] = new boolean[n + 1];
 		queue.add(0);
 		while (!queue.isEmpty()) {
 			int l = queue.poll();
