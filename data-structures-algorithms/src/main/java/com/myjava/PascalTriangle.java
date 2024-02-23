@@ -10,7 +10,7 @@ public class PascalTriangle {
 	// more space.
 	public static List<Long> nthRowOfPascalTriangle(int n) {
 		List<Long> list = new ArrayList<Long>();
-		Queue<Long> queue = new ArrayDeque<>();
+		Queue<Long> queue = new ArrayDeque<Long>();
 		queue.offer(1L);
 		int i = 2, j = 1;
 		while (i <= n) {
