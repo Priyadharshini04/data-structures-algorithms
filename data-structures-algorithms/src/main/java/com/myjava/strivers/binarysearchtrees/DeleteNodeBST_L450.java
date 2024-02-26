@@ -4,8 +4,67 @@ import com.myjava.strivers.binarytrees.TreeNode;
 
 //https://leetcode.com/problems/delete-node-in-a-bst/description/
 public class DeleteNodeBST_L450 {
-
 	public static TreeNode deleteNode(TreeNode root, int key) {
+		TreeNode node = root;
+		TreeNode parent = null;
+		boolean isLeft = true;
+		while (node != null) {
+			if (node.data == key)
+				break;
+			else if (node.data < key) {
+				isLeft = false;
+				parent = node;
+				node = node.right;
+			} else {
+				isLeft = true;
+				parent = node;
+				node = node.left;
+			}
+		}
+		if (node == null)
+			return root;
+		if (node.left == null && node.right == null) {
+			if (parent == null)
+				return null;
+			else if (isLeft)
+				parent.left = null;
+			else
+				parent.right = null;
+			return root;
+		} else if (node.left != null) {
+			TreeNode node1 = null;
+			if (parent == null) {
+				root = root.left;
+				node1 = root;
+			} else {
+				if (isLeft) {
+					parent.left = node.left;
+					node1 = node.left;
+
+				} else {
+					parent.right = node.left;
+					node1 = node.left;
+				}
+			}
+			while (node1 != null && node1.right != null) {
+				node1 = node1.right;
+			}
+			node1.right = node.right;
+		} else {
+			if (parent == null) {
+				root = root.right;
+			} else {
+				if (isLeft) {
+					parent.left = node.right;
+				} else {
+					parent.right = node.right;
+				}
+			}
+		}
+		return root;
+	}
+
+	public static TreeNode deleteNodes(TreeNode root, int key) {
 		TreeNode node = root;
 		TreeNode parent = root;
 		// finding the node for the given key.

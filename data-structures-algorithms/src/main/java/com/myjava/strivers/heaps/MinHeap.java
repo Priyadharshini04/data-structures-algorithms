@@ -1,6 +1,9 @@
 package com.myjava.strivers.heaps;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
 import java.util.List;
 
 // https://www.codingninjas.com/studio/problems/min-heap-implementation_5480527
@@ -8,7 +11,6 @@ public class MinHeap {
 	List<Integer> heap = new ArrayList<Integer>();
 
 	MinHeap(int size) {
-
 	}
 
 	// Implement the function to remove minimum element.
