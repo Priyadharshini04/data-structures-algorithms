@@ -16,4 +16,10 @@ public class KthMissingPositiveInteger_L1539Test {
 		int ans = KthMissingPositiveInteger_L1539.findKthPositive(new int[] { 1, 2, 3, 4 }, 2);
 		assertEquals(6, ans);
 	}
+
+	@Test
+	public void test3() {
+		int ans = KthMissingPositiveInteger_L1539.findKthPositive(new int[] { 2 }, 1);
+		assertEquals(1, ans);
+	}
 }
