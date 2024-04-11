@@ -10,8 +10,9 @@ import java.util.Set;
 //https://leetcode.com/problems/word-ladder-ii/
 public class WordLadderII_L126 {
 
-	public static int findLadders(String beginWord, String endWord, List<String> wordList) {
-		int total = 0;
+	public static List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+		List<List<String>> result = new ArrayList<List<String>>();
+		int n = beginWord.length();
 		Set<List<Character>> set = new HashSet<>();
 		for (int i = 0; i < wordList.size(); i++) {
 			if (!beginWord.equals(wordList.get(i))) {
@@ -22,42 +23,62 @@ public class WordLadderII_L126 {
 				set.add(chars);
 			}
 		}
-
-		List<Character> begin = new ArrayList<>();
-		for (char c : beginWord.toCharArray()) {
-			begin.add(c);
-		}
-
-		List<Character> end = new ArrayList<>();
+		List<Character> endWordChars = new ArrayList<Character>();
 		for (char c : endWord.toCharArray()) {
-			end.add(c);
+			endWordChars.add(c);
 		}
 
-		Queue<WordWithCount> queue = new ArrayDeque<>();
-		queue.offer(new WordWithCount(begin));
+		List<Character> beginWordChars = new ArrayList<Character>();
+		for (char c : beginWord.toCharArray()) {
+			beginWordChars.add(c);
+		}
+		List<String> list = new ArrayList<String>();
+		findWords(list, result, set, set, beginWordChars, n, new boolean[] { false }, endWordChars, beginWord);
 
-		while (!queue.isEmpty()) {
-			WordWithCount wc = queue.poll();
-			List<Character> word = wc.word;
-			if (word.equals(end)) {
-				continue;
-			}
-			for (int i = 0; i < end.size(); i++) {
-				char original = word.get(i);
-				for (char j = 'a'; j <= 'z'; j++) {
-					word.set(i, j);
-					if (set.contains(word)) {
-						if (word.equals(end))
-							total = 1;
-						queue.offer(new WordWithCount(new ArrayList<>(word), wc.count + 1));
-						set.remove(word);
-					} else if (word.equals(end) && total >= 1) {
-						total++;
+		return result;
+	}
+
+	public static void findWords(List<String> list, List<List<String>> res, Set<List<Character>> set,
+			Set<List<Character>> globalSet, List<Character> currStr, int n, boolean[] hasEnd, List<Character> endString,
+			String beginString) {
+		for (int i = 0; i < n; i++) {
+			char currChar = currStr.get(i);
+			for (char j = 'a'; j <= 'z'; j++) {
+				currStr.set(i, (char) j);
+				if (set.contains(currStr)) {
+					List<String> newList = new ArrayList<String>(list);
+					set.remove(currStr);
+					String removeStr = listToString(currStr);
+					if (endString.equals(currStr)) {
+						hasEnd[0] = true;
+						newList.add(0, beginString);
+						res.add(new ArrayList<String>(newList));
+						return;
+					} else {
+						newList.add(removeStr);
+						findWords(newList, res, set, globalSet, currStr, n, hasEnd, endString, beginString);
 					}
+					list.remove(removeStr);
+
+				} else if (endString.equals(currStr) && hasEnd[0]) {
+					List<String> newList = new ArrayList<String>(list);
+					String removeStr = listToString(currStr);
+					newList.add(removeStr);
+					newList.add(0, beginString);
+					res.add(new ArrayList<String>(newList));
+					list.remove(removeStr);
+					return;
 				}
-				word.set(i, original);
 			}
+			currStr.set(i, currChar);
 		}
-		return total;
+	}
+
+	public static String listToString(List<Character> list) {
+		StringBuilder sb = new StringBuilder();
+		for (char ch : list) {
+			sb.append(ch);
+		}
+		return sb.toString();
 	}
 }

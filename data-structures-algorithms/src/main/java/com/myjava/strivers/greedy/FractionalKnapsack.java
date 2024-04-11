@@ -33,11 +33,36 @@ public class FractionalKnapsack {
 
 			}
 		}
-		if(maxValues==0.00 && (valueTotal + calculatedValue)>maxValues)
-		{
-			maxValues=valueTotal + calculatedValue;
+		if (maxValues == 0.00 && (valueTotal + calculatedValue) > maxValues) {
+			maxValues = valueTotal + calculatedValue;
 		}
 		return maxValues;
+	}
+
+	public static double fractionalKnapsack(Pair[] arr, int W) {
+		int n = arr.length;
+		Arrays.sort(arr, (a, b) -> {
+			double aValPerKg = (double) a._value / a._weight;
+			double bValPerKg = (double) b._value / b._weight;
+			if (aValPerKg > bValPerKg) {
+				return -1;
+			} else if (aValPerKg < bValPerKg) {
+				return 1;
+			}
+			return 0;
+		});
+		double total = 0;
+		for (int i = 0; i < n; i++) {
+			if (W >= arr[i]._weight) {
+				total = (total + arr[i]._value);
+				W -= arr[i]._weight;
+			} else {
+				double val = (((double) (W * arr[i]._value)) / (double) arr[i]._weight);
+				total += val;
+				break;
+			}
+		}
+		return total;
 	}
 }
 

@@ -8,9 +8,21 @@ import java.util.Stack;
 public class DiameterOfBT {
 	int maxDiameter = 0;
 
-	public int diameterOfBinaryTrees(TreeNode root) {
-		findDiameterOfTree(root);
-		return maxDiameter;
+	public int diameterOfBinaryTree(TreeNode root) {
+//		findDiameterOfTree(root);
+//		return maxDiameter;
+		int[] maxHeight = new int[] { 0 };
+		findMaxDiameter(root, maxHeight);
+		return maxHeight[0];
+	}
+
+	int findMaxDiameter(TreeNode node, int[] maxDia) {
+		if (node == null)
+			return 0;
+		int leftHeight = findMaxDiameter(node.left, maxDia);
+		int rightHeight = findMaxDiameter(node.right, maxDia);
+		maxDia[0] = Math.max(maxDia[0], leftHeight + rightHeight);
+		return 1 + Math.max(leftHeight, rightHeight);
 	}
 
 	public int findDiameterOfTree(TreeNode node) {
@@ -26,8 +38,8 @@ public class DiameterOfBT {
 		return 1 + Math.max(lH, rH);
 	}
 
-	public int diameterOfBinaryTree(TreeNode root) {
-		int maxDiameter=0;
+	public int diameterOfBinaryTrees(TreeNode root) {
+		int maxDiameter = 0;
 		Queue<TreeNode> q1 = new ArrayDeque<TreeNode>();
 		if (root != null) {
 			q1.offer(root);
@@ -36,10 +48,9 @@ public class DiameterOfBT {
 			int level = q1.size();
 			while (level-- > 0) {
 				TreeNode n = q1.poll();
-				int diameter=heightOfTree(n.left)+heightOfTree(n.right);
-				if(maxDiameter<diameter)
-				{
-					maxDiameter=diameter;
+				int diameter = heightOfTree(n.left) + heightOfTree(n.right);
+				if (maxDiameter < diameter) {
+					maxDiameter = diameter;
 				}
 				if (n.left != null) {
 					q1.offer(n.left);

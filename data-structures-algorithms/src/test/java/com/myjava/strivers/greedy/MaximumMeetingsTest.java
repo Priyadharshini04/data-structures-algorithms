@@ -26,4 +26,9 @@ public class MaximumMeetingsTest {
 		assertEquals(2,
 				MaximumMeetings.maximumMeetings(new int[] { 712, 254, 869, 548 }, new int[] { 1357, 917, 1627, 586 }));
 	}
+
+	@Test
+	public void test5() {
+		assertEquals(1, MaximumMeetings.maximumMeetings(new int[] { 2, 1 }, new int[] { 2, 2 }));
+	}
 }

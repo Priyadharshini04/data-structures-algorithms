@@ -15,6 +15,48 @@ public class DetectCycleInDirectedGraph_L210 {
 			adjList.get(pairs[i][0]).add(pairs[i][1]);
 		}
 		boolean visited[] = new boolean[v + 1];
+		boolean pathVisited[] = new boolean[v + 1];
+
+		boolean[] isConnect = new boolean[] { false };
+		for (int i = 0; i < adjList.size(); i++) {
+			if (!visited[i]) {
+				dfs(adjList, visited, isConnect, i, i, pathVisited);
+				pathVisited[i] = false;
+			}
+			if (isConnect[0])
+				return true;
+		}
+		return false;
+	}
+
+	private static void dfs(List<List<Integer>> adjList, boolean[] visited, boolean[] isConnect, int parent, int idx,
+			boolean[] pathVisited) {
+		if (!visited[idx] && !isConnect[0]) {
+			visited[idx] = true;
+			pathVisited[idx] = true;
+			for (int i = 0; i < adjList.get(idx).size(); i++) {
+				int vertex = adjList.get(idx).get(i);
+				if (!visited[vertex]) {
+					dfs(adjList, visited, isConnect, idx, vertex, pathVisited);
+					pathVisited[vertex] = false;
+				} else if (pathVisited[vertex]) {
+					isConnect[0] = true;
+					return;
+				}
+			}
+		}
+
+	}
+
+	public static boolean isConnectedss(int v, int[][] pairs) {
+		List<List<Integer>> adjList = new ArrayList<List<Integer>>();
+		for (int i = 0; i < v + 1; i++) {
+			adjList.add(new ArrayList<Integer>());
+		}
+		for (int i = 0; i < pairs.length; i++) {
+			adjList.get(pairs[i][0]).add(pairs[i][1]);
+		}
+		boolean visited[] = new boolean[v + 1];
 		boolean[] isConnect = new boolean[] { false };
 		for (int i = 0; i < adjList.size(); i++) {
 			dfs(adjList, visited, isConnect, i, i);
