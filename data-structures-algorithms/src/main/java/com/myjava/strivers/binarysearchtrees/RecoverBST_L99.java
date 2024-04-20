@@ -6,28 +6,63 @@ import com.myjava.strivers.binarytrees.TreeNode;
 public class RecoverBST_L99 {
 
 	public static TreeNode recover(TreeNode root) {
-		checkValidBSTandSwap(root, root, null, null);
+		checkValidBSTandSwap(root, root, null, null, new boolean[] { false });
 		return root;
 	}
 
-	public static void checkValidBSTandSwap(TreeNode root, TreeNode node, TreeNode leftMax, TreeNode rightMin) {
-		if (node == null) {
-			return;
-		}
+	public static TreeNode checkValidBSTandSwap(TreeNode root, TreeNode node, TreeNode min, TreeNode max,
+			boolean[] isSwapped) {
+		return null;
+	}
 
-		if (leftMax != null && node.data > leftMax.data) {
-			int temp = node.data;
-			node.data = leftMax.data;
-			leftMax.data = temp;
-			checkValidBSTandSwap(root, leftMax.right, null, leftMax);
+	// Won't work.
+	public static TreeNode checkValidBSTandSwaps(TreeNode root, TreeNode node, TreeNode min, TreeNode max,
+			boolean[] isSwapped) {
+		if (node == null) {
+			return null;
 		}
-		if (rightMin != null && node.data < rightMin.data) {
-			int temp = node.data;
-			node.data = rightMin.data;
-			rightMin.data = temp;
-			checkValidBSTandSwap(root, rightMin.left, rightMin, null);
+		if (min != null && node.data < min.data) {
+			return node;
 		}
-		checkValidBSTandSwap(root, node.left, node, rightMin);
-		checkValidBSTandSwap(root, node.right, leftMax, node);
+		if (max != null && node.data > max.data) {
+			return node;
+		}
+		TreeNode leftNode = checkValidBSTandSwap(root, node.left, min, node, isSwapped);
+		TreeNode rightNode = checkValidBSTandSwap(root, node.right, node, max, isSwapped);
+		if (leftNode != null && rightNode != null) {
+			int temp = leftNode.data;
+			leftNode.data = rightNode.data;
+			rightNode.data = temp;
+			isSwapped[0] = true;
+		} else if (leftNode != null) {
+			if (!isValid(node.data, leftNode.data, node.right != null ? node.right.data : Integer.MAX_VALUE)) {
+				int temp = node.data;
+				node.data = leftNode.data;
+				leftNode.data = temp;
+				isSwapped[0] = true;
+			} else {
+				return leftNode;
+			}
+		} else if (rightNode != null) {
+			if (!isValid(node.data, node.left != null ? node.left.data : Integer.MIN_VALUE, rightNode.data)) {
+				int temp = node.data;
+				node.data = rightNode.data;
+				rightNode.data = temp;
+				isSwapped[0] = true;
+			} else {
+				return rightNode;
+			}
+		}
+		return null;
+	}
+
+	public static boolean isValid(int a, int min, int max) {
+		if (a < min) {
+			return false;
+		}
+		if (a > max) {
+			return false;
+		}
+		return true;
 	}
 }

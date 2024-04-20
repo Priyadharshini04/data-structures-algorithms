@@ -3,7 +3,59 @@ package com.myjava.strivers.linkedlist;
 import java.util.Stack;
 
 public class ReverseNodesK {
-	public static Node reverseK(Node head, int k) {
+
+	public static Node reverseK(Node node, int k) {
+		Node temp = node; // 1
+		Node prevTail = null;
+		Node reverseHead = null;
+		while (temp != null) {
+			boolean[] isLess = new boolean[] { false };
+			Node kNode = findKthNodes(temp, k, isLess);
+			if (!isLess[0]) {
+				Node reverse = reverse(temp, k);
+				if (reverseHead == null) {
+					reverseHead = reverse;
+				}
+				if (prevTail != null) {
+					prevTail.next = reverse;
+				}
+			}
+			else {
+				prevTail.next=temp;
+				break;
+			}
+
+			prevTail = temp;
+			temp = kNode;
+		}
+		return reverseHead;
+	}
+
+	static Node findKthNodes(Node node, int k, boolean[] isLess) {
+		Node temp = node; // 1
+		while (temp != null && k-- > 0) {
+			temp = temp.next;
+		}
+		if (k > 0)
+			isLess[0] = true;
+		else
+			isLess[0] = false;
+		return temp;
+	}
+
+	static Node reverse(Node node, int k) {
+		Node temp = node;
+		Node prev = null;
+		while (temp != null && k-- > 0) {
+			Node currTemp = temp.next;
+			temp.next = prev;
+			prev = temp;
+			temp = currTemp;
+		}
+		return prev;
+	}
+
+	public static Node reverseK1(Node head, int k) {
 		Node temp = head;
 		Node prevNode = null;
 		while (temp != null) {

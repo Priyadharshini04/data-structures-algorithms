@@ -27,4 +27,22 @@ public class RecoverBST_L99Test {
 
 		SearchBSTTest.assertTreeNode(expectedRoot, ansRoot);
 	}
+
+	@Test
+	public void test3() {
+		TreeNode root = BinaryTreeLoop.createBinaryTreeWithList(Arrays.asList(3, 1, 4, null, null, 2));
+		TreeNode ansRoot = RecoverBST_L99.recover(root);
+		TreeNode expectedRoot = BinaryTreeLoop.createBinaryTreeWithList(Arrays.asList(2, 1, 4, null, null, 3));
+
+		SearchBSTTest.assertTreeNode(expectedRoot, ansRoot);
+	}
+
+	@Test
+	public void test4() {
+		TreeNode root = BinaryTreeLoop.createBinaryTreeWithList(Arrays.asList(3, null, 2, null, 1));
+		TreeNode ansRoot = RecoverBST_L99.recover(root);
+		TreeNode expectedRoot = BinaryTreeLoop.createBinaryTreeWithList(Arrays.asList(1, null, 2, null, 3));
+
+		SearchBSTTest.assertTreeNode(expectedRoot, ansRoot);
+	}
 }
